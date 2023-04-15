@@ -21,5 +21,17 @@ export default class Cart {
 
         return sum - (sum * discount / 100)
     }
+
+    del(id: number): void {
+        let index: number;
+        index = this._items.findIndex( item => item.id === id);
+
+        if(index !== -1) {
+            this._items.splice(index, 1)
+        } else {
+            throw new Error(`Объект с id:${id} не существует`)
+        }
+        
+    }
 }
 

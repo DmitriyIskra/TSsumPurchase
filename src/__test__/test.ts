@@ -9,6 +9,7 @@ const moovieItem2 = new Moovie(246,'Мстители2', 'Avengers2', 2015, 'USA'
 cart.add(moovieItem);
 cart.add(moovieItem2);
 
+
 test('test sum', () => {
     const result = cart.sum();
 
@@ -19,4 +20,18 @@ test('test sumWithDiscount', () => {
     const result = cart.sumWithDiscount(10);
 
     expect(result).toBe(3600);
+})
+
+test('test del', () => {
+    cart.del(246);
+
+    const result = cart.items.length;
+
+    expect(result).toBe(1);
+})
+
+test('test del error', () => {
+    ;
+
+    expect(() => cart.del(249)).toThrow(`Объект с id:249 не существует`);
 })
